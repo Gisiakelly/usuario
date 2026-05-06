@@ -15,22 +15,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
+      - uses: actions/setup-java@v4
         with:
-          java-version: '17'
+          java-version: 17
           distribution: temurin
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
+      - uses: gradle/actions/setup-gradle@v4
 
-      - name: Give permission
-        run: chmod +x gradlew
+      - run: chmod +x gradlew
 
-      # ✅ BUILD NORMAL
-      - name: Build with Gradle
-        run: ./gradlew build
+      - run: ./gradlew build
 
-      # ✅ ENVIO DO DEPENDENCY GRAPH (STEP SEPARADO)
-      - name: Submit dependency graph
-        uses: gradle/actions/dependency-submission@v4
+      - uses: gradle/actions/dependency-submission@v4
