@@ -1,9 +1,11 @@
 package com.gisia.usuario.controller;
 
 import com.gisia.usuario.business.UsuarioService;
+import com.gisia.usuario.business.ViaCepService;
 import com.gisia.usuario.business.dto.EnderecoDTO;
 import com.gisia.usuario.business.dto.TelefoneDTO;
 import com.gisia.usuario.business.dto.UsuarioDTO;
+import com.gisia.usuario.infrastructure.clients.ViaCepDTO;
 import com.gisia.usuario.infrastructure.entity.Usuario;
 import com.gisia.usuario.infrastructure.security.JwtUtil;
 import com.gisia.usuario.infrastructure.security.SecurityConfig;
@@ -29,6 +31,7 @@ public class UsuarioController {
     private final UsuarioService usuarioService;
     private final AuthenticationManager authenticationManager;
     private final JwtUtil jwtUtil;
+    private final ViaCepService viaCepService;
 
     @PostMapping
     @Operation(summary = "Salvar  Usuários", description = "Cria um novo usuário")
@@ -119,5 +122,10 @@ public class UsuarioController {
     public ResponseEntity<TelefoneDTO> cadastraTelefone(@RequestBody TelefoneDTO dto,
                                                          @RequestHeader("Authorization")String token){
         return ResponseEntity.ok(usuarioService.cadastraTelefone(token, dto));
+    }
+
+    @GetMapping("/endereco/{cep}")
+    public ResponseEntity<ViaCepDTO> buscarDadosCep(@PathVariable ("cep") String cep){
+        return ResponseEntity.ok(viaCepService.buscarDadosEndereco(cep));
     }
 }
