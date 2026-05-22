@@ -6,19 +6,13 @@ import com.gisia.usuario.business.dto.EnderecoDTO;
 import com.gisia.usuario.business.dto.TelefoneDTO;
 import com.gisia.usuario.business.dto.UsuarioDTO;
 import com.gisia.usuario.infrastructure.clients.ViaCepDTO;
-import com.gisia.usuario.infrastructure.entity.Usuario;
-import com.gisia.usuario.infrastructure.security.JwtUtil;
 import com.gisia.usuario.infrastructure.security.SecurityConfig;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
